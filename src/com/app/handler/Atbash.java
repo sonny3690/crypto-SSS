@@ -8,29 +8,25 @@ public class Atbash {
 
 	private Frame f;
 	private JTextField output;
-	private char[] input;
 
-	public Atbash(Frame f, JTextField output, char[] pw) {
+	public Atbash(Frame f, JTextField output) {
 		this.f = f;
 		this.output = output;
-		this.input = pw;
 
-		setOutput (encrypt());
 	}
 
-	public String encrypt() {
-		String returnType = "" ;
+	public void encrypt(char[] input, JTextField output) {
+		String returnType = "";
 		for (int i = 0; i < input.length; i++) {
-			char c = input [i];
-			if (c >= 97 && c <= 122){
-				int x = 'z'-(c - 'a');
-				returnType += (char)(x);
+			char c = input[i];
+			if (c >= 97 && c <= 122) {
+				int x = 'z' - (c - 'a');
+				returnType += (char) (x);
 			}
 		}
-		
-		return returnType;
+		output.setText(returnType);
 	}
-	
+
 	public void setOutput(String s) {
 		output.setText(s);
 

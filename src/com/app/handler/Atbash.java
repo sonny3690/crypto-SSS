@@ -24,6 +24,23 @@ public class Atbash {
 				returnType += (char) (x);
 			}
 		}
+		for (int i = 0; i < input.length; i++) {
+			input[i] = returnType.charAt(i);
+		}
+		f.setEncrypted_output(input);
+
+		output.setText(returnType);
+	}
+
+	public void decrypt(char[] chars, JTextField output) {
+		String returnType = "";
+		for (int i =0; i< chars.length; i++){
+			char c = chars [i];
+			int x = 'z'-c + 'a';
+			
+			returnType += (char) (x);
+		}
+		
 		output.setText(returnType);
 	}
 

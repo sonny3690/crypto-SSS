@@ -1,7 +1,5 @@
 package com.app.handler;
 
-import java.util.Random;
-
 import javax.swing.JTextField;
 
 import com.app.frame.Frame;
@@ -25,6 +23,23 @@ public class AlphabetToNumber {
 			}
 		}
 
+		for (int i = 0; i < input.length; i++) {
+			input[i] = returnType.charAt(i);
+		}
+		f.setEncrypted_output(input);
+		output.setText(returnType);
+	}
+
+	public void decrypt(String s, JTextField output)  {
+		String temp = s;
+		String splited [] = temp.split(" ");
+		String returnType = "";
+		
+		for (int i = 0; i < splited.length; i++){
+			char c = (char)((Integer.parseInt(splited[i]) +  'a' - 1));
+			returnType += c;
+		}
+			
 		output.setText(returnType);
 	}
 

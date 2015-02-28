@@ -2,6 +2,7 @@ package com.app.handler;
 
 import java.util.Random;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import com.app.frame.Frame;
@@ -15,7 +16,6 @@ public class MorseCode {
 	public MorseCode(Frame f, JTextField output) {
 		this.f = f;
 		this.output = output;
-
 	}
 
 	public void encrypt(char[] chars, JTextField output) {
@@ -47,6 +47,9 @@ public class MorseCode {
 				break;
 			case 'h':
 				returnVal += "....";
+				break;
+			case 'i':
+				returnVal += "..";
 				break;
 			case 'j':
 				returnVal += ".---";
@@ -104,9 +107,105 @@ public class MorseCode {
 			}
 			returnVal += " ";
 		}
+		f.setEncrypted_output(chars);
 		output.setText(returnVal);
 	}
 
+	public void decrypt (String s, JTextField output){
+		String temp [] = s.split(" ");
+		String returnVal = "";
+		
+		for (int i = 0; i< temp.length; i++){
+			switch (temp[i]) {
+			case ".-":
+				returnVal += 'a';
+				break;
+			case "-...":
+				returnVal += 'b';
+				break;
+			case "-.-.":
+				returnVal += 'c';
+				break;
+			case "-..":
+				returnVal += 'd';
+				break;
+			case ".":
+				returnVal += 'e';
+				break;
+			case "..-.":
+				returnVal += 'f';
+				break;
+			case "--.":
+				returnVal += 'g';
+				break;
+			case "....":
+				returnVal += 'h';
+				break;
+			case "..":
+				returnVal += 'i';
+				break;
+			case ".---":
+				returnVal += 'j';
+				break;
+			case "-.-":
+				returnVal += 'k';
+				break;
+			case ".-..":
+				returnVal += 'l';
+				break;
+			case "--":
+				returnVal += 'm' ;
+				break;
+			case "-.":
+				returnVal += 'n';
+				break;
+			case "---":
+				returnVal += 'o';
+				break;
+			case ".--.":
+				returnVal += 'p';
+				break;
+			case "--.-":
+				returnVal += 'q';
+				break;
+			case ".-.":
+				returnVal += 'r';
+				break;
+			case "...":
+				returnVal += 's';
+				break;
+			case "-":
+				returnVal += 't';
+				break;
+			case "..-":
+				returnVal += 'u';
+				break;
+			case "...-":
+				returnVal += 'v';
+				break;
+			case ".--":
+				returnVal += 'w';
+				break;
+			case "-..-":
+				returnVal += 'x';
+				break;
+			case "-.--":
+				returnVal += 'y';
+				break;
+			case "--..":
+				returnVal += 'z' ;
+				break;
+			case " ":
+				returnVal += ' ';
+				break;
+			default:
+				break;
+			}
+		}
+		output.setText(returnVal);
+	}
+	
+	
 	public void setOutput(String s) {
 		output.setText(s);
 	}

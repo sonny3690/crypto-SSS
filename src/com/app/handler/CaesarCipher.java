@@ -19,17 +19,40 @@ public class CaesarCipher {
 		rand = new Random();
 	}
 
-	public void encrypt(char[] chars, JTextField output) {
-		int shift = getRandomInteger() + 1;
+	public void encrypt(char[] chars, JTextField output, int shift) {
+		if (shift < 0)
+			shift = getRandomInteger() + 1;
 		for (int i = 0; i < chars.length; i++) {
 			char c = chars[i];
 			if (c >= 97 && c <= 122) {
 				int x = (c + shift - 19) % 26;
-
 				chars[i] = (char) (x + 'a');
 			}
 		}
+		f.setEncrypted_output(chars);
 		output.setText(new String(chars));
+	}
+
+	public void decrypt(char[] chars, JTextField output, int shift) {
+		if (shift == -1) {
+			JOptionPane.showMessageDialog(f, "Please Select a Valid Key");
+			return;
+		}
+
+		for (int i = 0; i < chars.length; i++) {
+			char c = chars[i];
+
+			if (c != ' ') {
+				int x = (c - shift - 19) % 26;
+				chars[i] = (char) (x + 'a');
+			}else {
+				chars[i] = ' ';
+			}
+
+		}
+
+		output.setText(new String(chars));
+
 	}
 
 	public void setOutput(String s) {
